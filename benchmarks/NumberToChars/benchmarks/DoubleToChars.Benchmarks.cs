@@ -8,17 +8,19 @@ public class DoubleToCharsBenchmarks
 {
     private readonly double[] randomDoubles = new double[Options.iterations];
 
+    public void SetupDoubles(double from, double to)
+    {
+        Random r = new Random(Options.seed);
+        for (int i = 0; i < Options.iterations; i++)
+            randomDoubles[i] = MyRandom.NextDouble(r, from, to);
+    }
+
     //============================================================
     #region 
     //============================================================
 
     [GlobalSetup(Targets = new[] { nameof(ToString_10000000d_99999999d), nameof(DoubleToChars_10000000d_99999999d), nameof(TryFormat_10000000d_99999999d) })]
-    public void Double_10000000d_99999999d()
-    {
-        Random r = new Random(Options.seed);
-        for (int i = 0; i < Options.iterations; i++)
-            randomDoubles[i] = MyRandom.NextDouble(r, 10000000d, 99999999d);
-    }
+    public void Double_10000000d_99999999d() => SetupDoubles(10000000d, 99999999d);
 
     [Benchmark]
     public void ToString_10000000d_99999999d()
@@ -49,12 +51,7 @@ public class DoubleToCharsBenchmarks
     //============================================================
 
     [GlobalSetup(Targets = new[] { nameof(ToString_01d_1d), nameof(TryFormat_01d_1d), nameof(DoubleToChars_01d_1d) })]
-    public void Double_0d_1d()
-    {
-        Random r = new Random(Options.seed);
-        for (int i = 0; i < Options.iterations; i++)
-            randomDoubles[i] = MyRandom.NextDouble(r, 0.1d, 1d);
-    }
+    public void Double_0d_1d() => SetupDoubles(0.1d, 1d);
 
     [Benchmark]
     public void ToString_01d_1d()
@@ -85,12 +82,7 @@ public class DoubleToCharsBenchmarks
     //============================================================
 
     [GlobalSetup(Targets = new[] { nameof(ToString_0d_1EMinus15d), nameof(DoubleToChars_0d_1EMinus15d), nameof(TryFormat_0d_1EMinus15d) })]
-    public void Double_0d_1EMinus15d()
-    {
-        Random r = new Random(Options.seed);
-        for (int i = 0; i < Options.iterations; i++)
-            randomDoubles[i] = MyRandom.NextDouble(r, 0d, 0.00000000000001d);
-    }
+    public void Double_0d_1EMinus15d() => SetupDoubles(0d, 0.00000000000001d);
 
     [Benchmark]
     public void ToString_0d_1EMinus15d()

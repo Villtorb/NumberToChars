@@ -9,8 +9,6 @@ namespace NumberToChars.Benchmarks
         public static void Main(string[] args)
         {
             var config = DefaultConfig.Instance;
-
-            // Use this to select benchmarks from the console:
             var summaries = BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, config);
         }
     }
