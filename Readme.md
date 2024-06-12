@@ -59,7 +59,7 @@ static extern int _snwprintf_s([MarshalAs(UnmanagedType.LPWStr)] StringBuilder s
 ```
 
 ## Benchmarks
-The C# compiler has many optimisation tricks for strings and some are not so obvious. All of the starting values were cached into an array during setup, and in this case calling int.ToString() did not allocate at all. I'm not sure why so please tell me, but for now and as always its worth benchmarking your code to see what's what... 
+The C# compiler has many optimisation tricks for strings and some not so obvious, so highly isolated benchmarks like this should only be recieved as an idea, not a sales statement. Now if anyone can tell me how TryFormat converts ints so fast that'd be great...
 <b>
 ```
  - 10_000_000 random input values
@@ -67,19 +67,19 @@ The C# compiler has many optimisation tricks for strings and some are not so obv
 
 | Method                           | Mean        | Error     | StdDev    | Gen0        | Allocated   |
 |==== Integers 0 to 2147483647=======================================================================|
-| ToString                         |    13.64 ms |  0.080 ms |  0.075 ms |           - |         6 B |
-| TryFormat                        |    52.08 ms |  0.573 ms |  0.478 ms |           - |        40 B |
-| IntToChars <--                   |    46.44 ms |  0.300 ms |  0.266 ms |           - |        36 B |
+| ToString                         |    168.4 ms |   3.14 ms |   2.94 ms | 105750.0000 | 442749300 B |
+| TryFormat                        |    124.8 ms |   0.52 ms |   0.49 ms |           - |        80 B |
+| IntToChars <--                   |    278.5 ms |   2.67 ms |   2.37 ms |           - |       200 B |
 
 |==== Floats 0.1f to 1f =============================================================================|
-| ToString_01f_1f                  | 1,285.12 ms |  7.419 ms |  6.940 ms | 106000.0000 | 445054008 B |
-| TryFormat_01f_1f                 | 1,274.84 ms |  6.278 ms |  5.565 ms |           - |       400 B |
+| ToString                         | 1,285.12 ms |  7.419 ms |  6.940 ms | 106000.0000 | 445054008 B |
+| TryFormat                        | 1,274.84 ms |  6.278 ms |  5.565 ms |           - |       400 B |
 | FloatToChars <--                 |   423.34 ms |  1.154 ms |  1.079 ms |           - |       400 B |
 
 |==== Floats 1000f to 9999f =========================================================================|
-| ToString                         | 1,625.23 ms | 19.237 ms | 16.064 ms |  95000.0000 | 400044752 B |
-| TryFormat                        | 1,564.62 ms |  6.378 ms |  5.966 ms |           - |       400 B |
-| FloatToChars <--                 |   240.17 ms |  0.820 ms |  0.685 ms |           - |       133 B |
+| ToString                         |  1,614.4 ms |   7.48 ms |   6.25 ms |  95000.0000 | 400044752 B |
+| TryFormat                        |  1,580.3 ms |   7.20 ms |   6.73 ms |           - |       400 B |
+| FloatToChars <--                 |    209.9 ms |   2.79 ms |   2.61 ms |           - |       133 B |
 
 |==== Doubles 1E+7d to 1E+8d=========================================================================|
 | ToString                         | 1,730.43 ms | 20.087 ms | 18.789 ms | 139000.0000 | 581849464 B |
