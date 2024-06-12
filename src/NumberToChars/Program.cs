@@ -1,8 +1,4 @@
-﻿using System.Buffers;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using System.Text;
-using NumberToChars;
+﻿using NumberToChars;
 
 int i = 1729;
 var int_result = ToChars.Int(i, stackalloc char[32]);

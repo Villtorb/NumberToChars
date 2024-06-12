@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Buffers;
 using BenchmarkDotNet.Attributes;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace NumberToChars.Benchmarks;
 

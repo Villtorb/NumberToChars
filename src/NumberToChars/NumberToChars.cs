@@ -1,5 +1,3 @@
-using System.Buffers;
-
 namespace NumberToChars
 {
     public static class ToChars
