@@ -1,7 +1,7 @@
 # NumberToChars - C# - int, float, double
 
-![Build Status](https://img.shields.io/github/workflow/status/yourusername/LibraryName/CI)
-![License](https://img.shields.io/github/license/yourusername/LibraryName)
+![Build](https://github.com/Villtorb/NumberToChars/.github/workflows/build.yml/badge.svg)
+![License](https://img.shields.io/github/license/Villtorb/NumberToChars)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
 A set of simple functions for converting an `int`, `float` or `double` into a `Span<char>` and avoiding `ToString()` that would otherwise allocate memory.
