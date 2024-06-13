@@ -26,7 +26,7 @@ using Villt;
 
 ## Alternatives
 
-<b>TryFormat</b> is a `.NET Core 2.1`, `.Net5` and `.Net6+` feature and is far more convenient, has been available since spans were a thing, but not all of us can use it, such as in Unity as it is using `netstandard2.1`.
+<b>TryFormat</b> is the way. It came in `.NET Core 2.1`, `.Net5` and `.Net6+` at the same time as Span and is far more convenient but isn't always available. Anything targeting `netstandard2.0`, which the older Unity versions do, has the ability to import Span as a Nuget package but did not include `TryFormat`.
 
 For when you can use `TryFormat()`, I recommend this simple extensions method:
 ```csharp
