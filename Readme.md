@@ -10,13 +10,13 @@ A set of simple functions for converting an `int`, `float` or `double` into a `S
 ```csharp
 using Villt;
 
-    ConvertToChars.Int(i, stackalloc char[32]);
-    ConvertToChars.Float(f, stackalloc char[32]);
-    ConvertToChars.Double(d, stackalloc char[32]);
+    NumberToChars.Int(i, stackalloc char[32]);
+    NumberToChars.Float(f, stackalloc char[32]);
+    NumberToChars.Double(d, stackalloc char[32]);
     
     // you can force the digit precision with the last parameter
-    ConvertToChars.Float(f, stackalloc char[32], 7); //floats are considered precise up to 6-7 digits
-    ConvertToChars.Double(d, stackalloc char[32], 16); //doubles are precise up to 15-16 digits
+    NumberToChars.Float(f, stackalloc char[32], 7); //floats are considered precise up to 6-7 digits
+    NumberToChars.Double(d, stackalloc char[32], 16); //doubles are precise up to 15-16 digits
 
     //extensions
     2024.IntToChars(stackalloc char[4]);
