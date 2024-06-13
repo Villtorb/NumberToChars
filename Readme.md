@@ -1,5 +1,5 @@
 # NumberToChars - C# - int, float, double
-
+![Build Status](https://github.com/Villtorb/NumberToChars/actions/workflows/dotnet.yml/badge.svg)
 ![License](https://img.shields.io/github/license/Villtorb/NumberToChars)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
